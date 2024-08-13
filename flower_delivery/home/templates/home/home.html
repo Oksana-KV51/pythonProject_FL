@@ -1,0 +1,18 @@
+{% extends 'home/base.html' %}
+
+{% block title %}
+    <title>Главная страница</title>
+{% endblock %}
+
+{% block content %}
+    <div class="jumbotron">
+        <h1 class="display-4">Добро пожаловать в Магазин цветов!</h1>
+        <p class="lead">Здесь вы найдете самые красивые цветы для любого случая.</p>
+        <hr class="my-4">
+        <p>Для того что бы посмотреть каталог, пройдите регистрацию.</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'users:register' %}" role="button">Зарегистрироваться</a>
+        <hr class="my-4">
+        <h2>Отзывы наших покупателей</h2>
+
+    </div>
+{% endblock %}
