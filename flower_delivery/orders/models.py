@@ -1,16 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from catalog.models import Product
 
 
-
-class ProductUser(models.Model):
-    name = models.CharField(max_length=100)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    image = models.ImageField(upload_to='catalog/img/')
-
-    class Meta:
-        verbose_name = 'Товар'
-        verbose_name_plural = 'Товары'
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
     products = models.ManyToManyField(ProductUser, through='OrderItem')
@@ -22,6 +14,9 @@ class Order(models.Model):
         ('completed', 'Completed'),
         ('canceled', 'Canceled'),
     ])
+
+    def __str__(self):
+        return f"Order {self.id} by {self.user}"
 
     class Meta:
         verbose_name = 'Заказ'
